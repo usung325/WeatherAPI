@@ -8,19 +8,51 @@ let limit = 1;
 let coordInfo;
 let lat, lon = 0;
 
+let currLat, currLon;
+
 function kToF(Kelvin) {
   return (((Kelvin - 273.15) * 1.8) + 32).toFixed(2);
 }
 
-function drawPoint(lon, lat) {
+function drawPoint(lon, lat, currTemp, city) {
   let lonX = map(lon, -180, 180, 0, width);
   let latY = map(lat, -90, 90, height, 0);
 
   console.log(lonX, latY);
+
+  // noStroke();
+  // fill(250);
+  // rectMode(CORNER);
+  // rect(lonX + 10, latY - 10, 50,20);
+
+
+  strokeWeight(2);
   noFill();
   stroke('red');
   ellipse(lonX, latY, 10);
+
+  strokeWeight(0.5);
+  textSize(10);
+  fill('red');
+  text(currTemp, lonX + 10, latY);
+  text(city, lonX + 10, latY + 10);
+
 }
+
+// function getMyLocation() {
+//   navigator.geolocation.getCurrentPosition((position) => {
+//     let myLat = position.coords.latitude;
+//     let myLon = position.coords.longitude;
+
+//     console.log(myLat, myLon);
+    
+//     myLat = (map(myLat,  -90, 90, height, 0)).toFixed(4);
+//     myLon = (map(myLon, -180, 180, 0, width)).toFixed(4);
+//     noFill();
+//     strokeWeight(0.2);
+//     ellipse(myLon, myLat, 100);
+//   })
+// }
 
 function weatherMap(lat, lon) {
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApi}`;
@@ -30,9 +62,10 @@ function weatherMap(lat, lon) {
     .then(data => {
       weatherData = data;
       console.log(weatherData);
-      console.log('the current weather @' + weatherData.name + ' is: ' + kToF(weatherData.main.temp) + ' F');
+      let currTemp = kToF(weatherData.main.temp);
+      console.log('the current weather @' + weatherData.name + ' is: ' + currTemp + ' F');
       console.log(weatherData.coord.lon, weatherData.coord.lat);
-      drawPoint(weatherData.coord.lon, weatherData.coord.lat);
+      drawPoint(weatherData.coord.lon, weatherData.coord.lat, currTemp, weatherData.name);
 
     })
     .catch(err => console.log(err));
@@ -58,7 +91,8 @@ async function getCoordByName(city) {
 }
 
 function setup() {
-  createCanvas(800, 800);
+  
+  createCanvas(innerWidth, innerHeight);
   background(220);
   // getCoordByName('Seoul');
   // getCoordByName('London');
@@ -67,10 +101,22 @@ function setup() {
   for (city of cityList) {
     getCoordByName(city);
   }
+
+  // setTimeout(function() {
+  //   getMyLocation()
+  // }, 1000);
+}
+
+function mouseClicked() {
+  let lonX = (map(mouseX, 0, width, -180, 180)).toFixed(4);
+  let latY = (map(mouseY,  height, 0, -90, 90)).toFixed(4);
+  weatherMap(latY, lonX);
+  console.log(lonX, latY);
 }
 
 function draw() {
 
+  // getMyLocation();
 
 }
 
