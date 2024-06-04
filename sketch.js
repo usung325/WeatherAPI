@@ -1,7 +1,11 @@
 const weatherApi = '5680dac342fac3bdf262e90bd5d52dce';
 
 let weatherData;
-let cityList = ["Tokyo", "New York", "Sydney", "London", "Cape Town", "Buenos Aires", "Moscow", "Mumbai", "Los Angeles", "Rio de Janeiro", "Beijing", "Cairo", "Jakarta", "Lagos", "Santiago", "Delhi", "Toronto", "Melbourne", "Paris", "Johannesburg", "São Paulo", "Seoul", "Nairobi", "Istanbul", "Mexico City", "Hong Kong", "Bangkok", "Dubai", "Lima", "Singapore", "Riyadh"];
+let cityList = ["Tokyo", "New York", "Sydney", "London", "Cape Town", "Buenos Aires", "Moscow", "Mumbai", "Los Angeles", "Rio de Janeiro", "Beijing", "Cairo", "Jakarta", "Lagos", "Santiago", "Delhi", "Toronto", "Melbourne", "Paris", "Johannesburg", "São Paulo", "Seoul", "Nairobi", "Istanbul", "Mexico City", "Hong Kong", "Bangkok", "Dubai", "Lima", "Singapore", "Riyadh",
+"Shanghai", "Karachi", "Kinshasa", "Manila", "Guangzhou", "Lahore", "Shenzhen", "Bangalore", "Tianjin", "Chengdu", "Hyderabad", "Wuhan", "Chongqing", "Ahmedabad", "Kuala Lumpur", "Xi'an", "Baghdad", "Ho Chi Minh City", "Johor Bahru", "Tehran", "Athens", "Helsinki", "Stockholm", "Oslo", "Reykjavik", "Lisbon", "Vienna", "Warsaw", "Prague", "Budapest",
+"Havana", "Caracas", "Bogotá", "Caracas", "Kingston", "Panama City", "Lima", "Montevideo", "Sucre", "Asunción", "Brisbane", "Perth", "Auckland", "Honolulu", "Anchorage", "San Francisco", "Chicago", "Miami", "Vancouver", "Montreal", "Edmonton", "Calgary", "Quebec City", "Ottawa", "Boston", "Philadelphia", "Washington D.C.", "Atlanta", "Dallas", "Houston",
+"Seattle", "Denver", "Phoenix", "Salt Lake City", "Las Vegas", "San Diego", "Minneapolis", "Detroit", "Columbus", "Indianapolis", "Kansas City", "St. Louis", "New Orleans", "Orlando", "Charlotte", "Portland", "San Antonio", "Sacramento", "Cleveland", "Cincinnati", "Pittsburgh", "Baltimore", "Milwaukee", "Raleigh"
+];
 
 // let city = 'Seoul';
 let limit = 1;
